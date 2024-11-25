@@ -25,6 +25,7 @@ export default tseslint.config(
             'react-refresh': reactRefresh,
         },
         rules: {
+            "react/react-in-jsx-scope": "off",
             ...reactHooks.configs.recommended.rules,
             'react-refresh/only-export-components': [
                 'warn',
