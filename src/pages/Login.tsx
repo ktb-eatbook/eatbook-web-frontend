@@ -15,7 +15,6 @@ const Login = () => {
                     className="mx-auto h-52 w-auto"
                 />
             </div>
-
             <div className="sm:mx-auto sm:w-full sm:max-w-sm mt-12">
                 <img src="/kakaoLogin.png" alt="login-image" className='hover:cursor-pointer scale-90'
                      onClick={loginSubmit}

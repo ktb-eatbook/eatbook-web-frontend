@@ -27,8 +27,6 @@ const TermsAndConditions = (): React.JSX.Element => {
                           value={privacyPolicy}
                 ></textarea>
             </div>
-
-            {/* 선택 동의 */}
         </div>
     )
 }

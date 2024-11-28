@@ -1,12 +1,11 @@
 import './App.css';
-import TermsAndConditions from "./pages/TermsAndConditions.tsx";
-import Login from "./pages/Login.tsx";
+import Register from "./pages/Register.tsx";
 
 function App() {
 
   return (
     <>
-        <Login />
+        <Register />
     </>
   )
 }
