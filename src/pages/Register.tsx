@@ -2,8 +2,8 @@ import {useState} from "react";
 
 function Register(): React.JSX.Element {
     const [userInfo, setUserInfo] = useState({
-        sex: '',
-        age: 0,
+        gender: 'OTHER',
+        ageGroup: 0,
     });
 
     // TODO: API 코드 추가
@@ -21,18 +21,18 @@ function Register(): React.JSX.Element {
                     <div className="flex gap-10 items-center">
                         <label className="w-12 text-sm font-medium text-gray-900">성별</label>
                         <div className="flex w-full space-x-4">
-                            {["남자", "여자"].map((sex) => (
+                            {["남자", "여자"].map((gender) => (
                                 <button
-                                    key={sex}
+                                    key={gender}
                                     type="button"
-                                    onClick={() => setUserInfo((prev) => ({...prev, sex: sex}))}
+                                    onClick={() => setUserInfo((prev) => ({...prev, gender: gender}))}
                                     className={`px-4 py-2 rounded-md text-sm font-medium w-full
-                                    ${userInfo.sex === sex
+                                    ${userInfo.gender === gender
                                             ? "bg-orange-400 text-white"
                                             : "bg-gray-100 text-gray-900"
                                     } hover:bg-orange-400 hover:text-white`}
                                 >
-                                    {sex}
+                                    {gender}
                                 </button>
                             ))}
                         </div>
@@ -47,7 +47,7 @@ function Register(): React.JSX.Element {
                             type="number"
                             min="0"
                             max="100"
-                            value={userInfo.age}
+                            value={userInfo.ageGroup}
                             onChange={(e) =>
                                 setUserInfo((prev) => ({
                                     ...prev,
