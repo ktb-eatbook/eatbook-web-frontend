@@ -3,6 +3,7 @@ import Login from './pages/Login';
 import {Route, BrowserRouter as Router, Routes} from "react-router-dom";
 import Register from "./pages/Register.tsx";
 import DeleteAccount from "./pages/DeleteAccount.tsx";
+import EmailLogin from "./pages/EmailLogin.tsx";
 
 function App() {
 
@@ -11,7 +12,7 @@ function App() {
           <div className="App">
               <Login />
               <Routes>
-                  <Route path="/email-login" element={<Register />} />
+                  <Route path="/email-login" element={<EmailLogin />} />
                   <Route path="/additional-info" element={<Register />} />
                   <Route path="/account" element={<DeleteAccount />} />
               </Routes>
