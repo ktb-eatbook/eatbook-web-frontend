@@ -13,7 +13,7 @@ function App() {
               <Routes>
                   <Route path="/email-login" element={<Register />} />
                   <Route path="/additional-info" element={<Register />} />
-                  <Route path="/" element={<DeleteAccount />} />
+                  <Route path="/account" element={<DeleteAccount />} />
               </Routes>
           </div>
       </Router>
