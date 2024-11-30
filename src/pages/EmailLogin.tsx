@@ -26,13 +26,14 @@ function EmailLogin(): React.JSX.Element {
                     },
                     body: JSON.stringify({ encryptedEmail }),
                 });
-    
+                
                 if (response.ok) {
                     const result = await response.json()
                     console.log(`리스폰 객체: ${response}`)
+                    console.log(`${WindowUtil.isBrowser()}`)
+                    console.log(`${WindowUtil.isFlutterApp()}`)
                     console.log("**************결과**************")
-                    for(var property in result) console.log(property)
-
+                    
                     // 응답 헤더에서 토큰 추출
                     const accessToken = response.headers.get("AccessToken");
                     const refreshToken = response.headers.get("RefreshToken");
@@ -40,7 +41,7 @@ function EmailLogin(): React.JSX.Element {
                     if (!accessToken) {
                         await navigate('/additional-info');
                     }
-
+                    
                     // TODO: 분기 처리 필요
                     if (WindowUtil.isFlutterApp()) {
                         const data = result['data']
