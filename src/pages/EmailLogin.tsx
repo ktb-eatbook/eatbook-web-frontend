@@ -4,13 +4,15 @@
 import {useNavigate} from "react-router-dom";
 import {useEffect} from "react";
 
+import styles from "../css/email_login.module.css"
+import { FlutterAppAdaptor, WindowUtil } from "../common";
+
 function EmailLogin(): React.JSX.Element {
     const navigate = useNavigate();
 
     useEffect(() => {
         // 프레그먼트 추출
         const encryptedEmail = window.location.hash.substring(1);
-        console.log("Encrypted Email: ", encryptedEmail);
 
         // 백엔드 API 요청
         const processEmailLogin = async ():Promise => {
@@ -24,25 +26,31 @@ function EmailLogin(): React.JSX.Element {
                     },
                     body: JSON.stringify({ encryptedEmail }),
                 });
-
+    
                 if (response.ok) {
+                    const result = await response.json()
+                    console.log(`결과: ${result}`)
+
                     // 응답 헤더에서 토큰 추출
                     const accessToken = response.headers.get("AccessToken");
                     const refreshToken = response.headers.get("RefreshToken");
-
-                    console.log("로그인 Access Token:", accessToken);
-                    console.log("로그인 Refresh Token:", refreshToken);
 
                     if (!accessToken) {
                         await navigate('/additional-info');
                     }
 
                     // TODO: 분기 처리 필요
-                    if (window.flutter_inappwebview !== undefined) {
-                      // flutter event handler 호출
+                    if (WindowUtil.isFlutterApp()) {
+                        const data = result['data']
+                        FlutterAppAdaptor.sendLoginResult({
+                            data: data['member'],
+                            accesstoken,
+                            refreshtoken,
+                        })
+                        return
                     }
                     else { // 웹
-                        // 토큰 가지고 회원탈퇴 페이지로 redirect
+                        // // 토큰 가지고 회원탈퇴 페이지로 redirect
                         await navigate("/account", {
                             state: {
                                 accessToken,
@@ -57,12 +65,12 @@ function EmailLogin(): React.JSX.Element {
                 console.error("API 요청 중 오류 발생:", error);
             }
         };
-        processEmailLogin();
+        // processEmailLogin();
     }, [navigate])
 
     return (
-        <div>
-            <h1>로그인중...</h1>
+        <div className="loader_container">
+            <span className="loader"></span>
         </div>
     )
 }
