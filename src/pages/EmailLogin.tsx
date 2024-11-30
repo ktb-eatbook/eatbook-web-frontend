@@ -41,6 +41,9 @@ function EmailLogin(): React.JSX.Element {
                     // TODO: 분기 처리 필요
                     if (WindowUtil.isFlutterApp()) {
                         const data = result['data']
+                        console.log(result)
+                        console.log(data)
+                        console.log(data['member'])
                         FlutterAppAdaptor.sendLoginResult({
                             data: result,
                             accesstoken: accessToken,
