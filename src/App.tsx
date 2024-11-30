@@ -10,8 +10,8 @@ function App() {
   return (
       <Router>
           <div className="App">
-              <Login />
               <Routes>
+                  <Route path='/' element={<Login />} />
                   <Route path="/email-login" element={<EmailLogin />} />
                   <Route path="/additional-info" element={<Register />} />
                   <Route path="/account" element={<DeleteAccount />} />

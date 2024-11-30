@@ -1,12 +1,17 @@
 import {useState} from "react";
 
 function Register(): React.JSX.Element {
+    const [token, setToken] = useState<string | null>(null); // 토큰 저장
     const [userInfo, setUserInfo] = useState({
         gender: 'OTHER',
-        ageGroup: 0,
+        ageGroup: '0',
     });
 
-    // TODO: API 코드 추가
+    // 유효한 추가 정보
+    const ageGroups = ["10", "20", "30", "40", "50", "60", "70", "80", "90", "100"];
+    const genders = ["MALE", "FEMALE", "OTHER"];
+
+    // TODO: web 회원가입 API 코드 추가
 
     return (
         <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
@@ -21,9 +26,9 @@ function Register(): React.JSX.Element {
                     <div className="flex gap-10 items-center">
                         <label className="w-12 text-sm font-medium text-gray-900">성별</label>
                         <div className="flex w-full space-x-4">
-                            {["남자", "여자"].map((gender) => (
+                            {["남자", "여자"].map((gender, index) => (
                                 <button
-                                    key={gender}
+                                    key={genders[index]}
                                     type="button"
                                     onClick={() => setUserInfo((prev) => ({...prev, gender: gender}))}
                                     className={`px-4 py-2 rounded-md text-sm font-medium w-full
@@ -41,24 +46,25 @@ function Register(): React.JSX.Element {
                     {/* 나이 */}
                     <div className="mt-4 flex gap-10 items-center">
                         <label className="w-12 text-sm font-medium text-gray-900">나이</label>
-                        <input
-                            id="age"
-                            name="age"
-                            type="number"
-                            min="0"
-                            max="100"
+                        <select
+                            id="ageGroup"
                             value={userInfo.ageGroup}
                             onChange={(e) =>
                                 setUserInfo((prev) => ({
                                     ...prev,
-                                    age: parseInt(e.target.value) || 0, // 입력값이 비어있으면 0으로 설정
+                                    ageGroup: e.target.value,
                                 }))
                             }
                             className="w-full rounded-md border-gray-300 shadow-sm focus:border-orange-300 focus:ring-0 sm:text-sm"
-                        />
+                        >
+                            {ageGroups.map((ageGroup) => (
+                                <option key={ageGroup} value={ageGroup}>
+                                    {ageGroup}대
+                                </option>
+                            ))}
+                        </select>
                     </div>
                 </div>
-
                 <button className='mt-14 w-full bg-orange-800 text-sm text-white hover:bg-orange-900'>회원가입</button>
             </div>
         </div>
