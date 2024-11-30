@@ -29,16 +29,11 @@ function EmailLogin(): React.JSX.Element {
                 
                 if (response.ok) {
                     const result = await response.json()
-                    console.log(`리스폰 객체: ${response}`)
-                    console.log(`${WindowUtil.isBrowser()}`)
-                    console.log(`${WindowUtil.isFlutterApp()}`)
-                    console.log(typeof window['flutter_inappwebview'])
-                    console.log("**************결과**************")
-                    
-                    for(let property in result) {
-                        console.log(property)
-                        console.log(Object.values(property))
-                    }
+                    .then(data => {
+                        console.log(data)
+                        return data
+                    })
+                    return
 
                     // 응답 헤더에서 토큰 추출
                     const accessToken = response.headers.get("AccessToken");
