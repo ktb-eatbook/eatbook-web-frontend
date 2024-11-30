@@ -34,7 +34,7 @@ function EmailLogin(): React.JSX.Element {
                     console.log("로그인 Refresh Token:", refreshToken);
 
                     if (!accessToken) {
-                        await navigate('additional-info/');
+                        await navigate('/additional-info');
                     }
 
                     // TODO: 분기 처리 필요
@@ -43,7 +43,7 @@ function EmailLogin(): React.JSX.Element {
                     }
                     else { // 웹
                         // 토큰 가지고 회원탈퇴 페이지로 redirect
-                        await navigate("account/", {
+                        await navigate("/account", {
                             state: {
                                 accessToken,
                                 refreshToken,
