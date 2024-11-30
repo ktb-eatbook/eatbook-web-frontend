@@ -21,6 +21,21 @@ export namespace FlutterAppAdaptor {
             } as const
         )
     }
+    export const sendSignUpWithLoginResult = ({
+        data,
+        accesstoken,
+        refreshtoken,
+    }: ISendLoginResult) => {
+        const connector = window['flutter_inappwebview']
+        connector.callHandler(
+            'onSuccessSignUpAndLogin',
+            {
+                member: data,
+                accesstoken,
+                refreshtoken,
+            } as const
+        )
+    }
 }
 
 export interface ISendLoginResult {
