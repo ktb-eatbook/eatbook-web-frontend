@@ -1,4 +1,11 @@
+import {useLocation} from "react-router-dom";
+
 const DeleteAccount = () => {
+    const location = useLocation();
+    const { accessToken, refreshToken } = location.state || {};
+
+    // TODO: 회원 탈퇴 api 추가\
+
     return (
         <div className='container flex flex-col justify-center items-center justify-self-center gap-5'>
             <div className='flex flex-col justify-center items-center gap-y-32'>

@@ -10,7 +10,7 @@ function EmailLogin(): React.JSX.Element {
     useEffect(() => {
         // 프레그먼트 추출
         const encryptedEmail = window.location.hash.substring(1);
-        console.log("Encrypted Email from Fragment: ", encryptedEmail);
+        console.log("Encrypted Email: ", encryptedEmail);
 
         // 백엔드 API 요청
         const processEmailLogin = async ():Promise => {
@@ -34,15 +34,18 @@ function EmailLogin(): React.JSX.Element {
                     console.log("로그인 Refresh Token:", refreshToken);
 
                     // TODO: 분기 처리 필요
-                    /*if (window.flutter_inappwebview !== undefined) {
-                      // event handler 호출
+                    if (window.flutter_inappwebview !== undefined) {
+                      // flutter event handler 호출
                     }
                     else { // 웹
-                        // 토큰 가지고 회원탈퇴 버튼 페이지로 redirect
-                    }*/
-
-                    // 쿠키 설정 완료 후 메인 페이지로 이동
-                    await navigate("/");
+                        // 토큰 가지고 회원탈퇴 페이지로 redirect
+                        await navigate("/account", {
+                            state: {
+                                accessToken,
+                                refreshToken,
+                            },
+                        });
+                    }
                 } else {
                     console.error("로그인 실패:", response.status);
                 }
