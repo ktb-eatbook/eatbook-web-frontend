@@ -17,7 +17,10 @@ function Register(): React.JSX.Element {
 
     // 유효한 추가 정보
     const ageGroups = ["10", "20", "30", "40", "50", "60", "70", "80", "90", "100"];
-    const genders = ["MALE", "FEMALE", "OTHER"];
+    const genders = {
+        "남자": "MALE", 
+        "여자": "FEMALE", 
+    }
 
     const register = async (): Promise<void> => {
         try {
@@ -37,7 +40,7 @@ function Register(): React.JSX.Element {
                 body: JSON.stringify({ 
                     token,
                     ageGroup: parseInt(userInfo.ageGroup),
-                    gender: userInfo.gender,
+                    gender: userInfo.gender === "" ? "OTHER" : genders[userInfo.gender],
                 }),
             });
 
@@ -86,7 +89,7 @@ function Register(): React.JSX.Element {
                         <div className="flex w-full space-x-4">
                             {["남자", "여자"].map((gender, index) => (
                                 <button
-                                    key={genders[index]}
+                                    key={index}
                                     type="button"
                                     onClick={() => setUserInfo((prev) => ({...prev, gender: gender}))}
                                     className={`px-4 py-2 rounded-md text-sm font-medium w-full
