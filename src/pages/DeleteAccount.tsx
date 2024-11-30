@@ -20,6 +20,7 @@ const DeleteAccount = () => {
             const response = await fetch(url, {
                 method: "DELETE",
                 credentials: 'include',
+                mode: "cors",
                 headers: {
                     "Content-Type": "application/json",
                 },
