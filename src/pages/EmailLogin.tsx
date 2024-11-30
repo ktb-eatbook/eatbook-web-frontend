@@ -33,13 +33,17 @@ function EmailLogin(): React.JSX.Element {
                     console.log("로그인 Access Token:", accessToken);
                     console.log("로그인 Refresh Token:", refreshToken);
 
+                    if (!accessToken) {
+                        await navigate('additional-info/');
+                    }
+
                     // TODO: 분기 처리 필요
                     if (window.flutter_inappwebview !== undefined) {
                       // flutter event handler 호출
                     }
                     else { // 웹
                         // 토큰 가지고 회원탈퇴 페이지로 redirect
-                        await navigate("/account", {
+                        await navigate("account/", {
                             state: {
                                 accessToken,
                                 refreshToken,

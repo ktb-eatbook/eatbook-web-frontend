@@ -12,9 +12,9 @@ function App() {
           <div className="App">
               <Routes>
                   <Route path='/' element={<Login />} />
-                  <Route path="/email-login" element={<EmailLogin />} />
-                  <Route path="/additional-info" element={<Register />} />
-                  <Route path="/account" element={<DeleteAccount />} />
+                  <Route path="email-login" element={<EmailLogin />} />
+                  <Route path="additional-info/" element={<Register />} />
+                  <Route path="account/" element={<DeleteAccount />} />
               </Routes>
           </div>
       </Router>
