@@ -1,11 +1,22 @@
+import { useLocation } from "react-router-dom";
+
 const DeleteAccount = () => {
     /*
     // 토큰 받아오기
     const location = useLocation();
     const { accessToken, refreshToken } = location.state || {};
     */
+    const location = useLocation();
 
     // TODO: 회원 탈퇴 api 추가\
+    const signOut = () => {
+        try {
+            console.log(location.state)
+        } catch(e) {
+            console.log("에러 발생")
+            console.log(e)
+        }
+    }
 
     return (
         <div className='container flex flex-col justify-center items-center justify-self-center gap-5'>
@@ -23,7 +34,9 @@ const DeleteAccount = () => {
                     <li>탈퇴 고객의 개인정보는 관련 법령에 따라 일정 기간 안전하게 보관되며, 그 이후 자동 파기됩니다.</li>
                 </ul>
             </div>
-            <button className='bg-red-400 text-white mt-12 shadow-md'>탈퇴하기</button>
+            <button
+            onClick={signOut}
+            className='bg-red-400 text-white mt-12 shadow-md'>탈퇴하기</button>
         </div>
     )
 };

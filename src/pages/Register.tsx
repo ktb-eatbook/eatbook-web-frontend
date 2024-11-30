@@ -22,6 +22,11 @@ function Register(): React.JSX.Element {
         "여자": "FEMALE", 
     }
 
+    /**
+     * 이메일 로그인의 useEffect 함수 내부에 있는 로그인 처리 로직과 중복되는 부분이 많습니다. </br>
+     * 
+     * 정리는 나중에 배포가 정상적으로 되었을 때 하는게 좋을 거 같습니다.
+     */
     const register = async (): Promise<void> => {
         try {
             if(userInfo.ageGroup === "0") {
@@ -49,6 +54,7 @@ function Register(): React.JSX.Element {
                 const accessToken = response.headers.get("AccessToken");
                 const refreshToken = response.headers.get("RefreshToken");
 
+                // 플러터 앱에서 접근한 경우
                 if (WindowUtil.isFlutterApp()) {
                     const data = result['data']
                     FlutterAppAdaptor.sendLoginResult({

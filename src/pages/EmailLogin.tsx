@@ -38,12 +38,8 @@ function EmailLogin(): React.JSX.Element {
                         await navigate('/additional-info');
                     }
                     
-                    // TODO: 분기 처리 필요
+                    // 플러터 앱에서 접근한 경우
                     if (WindowUtil.isFlutterApp()) {
-                        const data = result['data']
-                        console.log(result)
-                        console.log(data)
-                        console.log(data['member'])
                         FlutterAppAdaptor.sendLoginResult({
                             data: result,
                             accesstoken: accessToken,
