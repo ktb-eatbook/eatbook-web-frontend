@@ -15,6 +15,7 @@ const DeleteAccount = () => {
             const { accessToken, refreshToken } = location.state
             document.cookie = `AccessToken=${accessToken}; Path=/`
             document.cookie = `RefreshToken=${refreshToken}; Path=/`
+            
             const url = `${import.meta.env.VITE_API_URL}/api/members`;
             const response = await fetch(url, {
                 method: "DELETE",
