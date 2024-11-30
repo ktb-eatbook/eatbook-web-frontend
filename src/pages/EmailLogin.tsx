@@ -29,7 +29,9 @@ function EmailLogin(): React.JSX.Element {
     
                 if (response.ok) {
                     const result = await response.json()
-                    console.log(`결과: ${result}`)
+                    console.log(`리스폰 객체: ${response}`)
+                    console.log("**************결과**************")
+                    for(var property in result) console.log(property)
 
                     // 응답 헤더에서 토큰 추출
                     const accessToken = response.headers.get("AccessToken");
