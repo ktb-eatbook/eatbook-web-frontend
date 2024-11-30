@@ -28,7 +28,8 @@ function EmailLogin(): React.JSX.Element {
                 });
                 
                 if (response.ok) {
-                    const result = await response.json()
+                    const result = await response
+                    .json()
                     .then(data => {
                         console.log(data)
                         return data
@@ -48,8 +49,8 @@ function EmailLogin(): React.JSX.Element {
                         const data = result['data']
                         FlutterAppAdaptor.sendLoginResult({
                             data: data['member'],
-                            accesstoken,
-                            refreshtoken,
+                            accesstoken: accessToken,
+                            refreshtoken: refreshToken,
                         })
                         return
                     }
