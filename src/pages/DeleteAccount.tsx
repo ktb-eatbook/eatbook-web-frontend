@@ -13,8 +13,6 @@ const DeleteAccount = () => {
     const signOut = async () => {
         try {
             const { accessToken, refreshToken } = location.state
-            document.cookie = `AccessToken=${accessToken}; Path=/; Secure; SameSite=None`
-            document.cookie = `RefreshToken=${refreshToken}; Path=/; Secure; SameSite=None`
 
             const url = `${import.meta.env.VITE_API_URL}/api/members`;
             const response = await fetch(url, {
@@ -23,6 +21,8 @@ const DeleteAccount = () => {
                 mode: "cors",
                 headers: {
                     "Content-Type": "application/json",
+                    "AccessToken": accessToken,
+                    "RefreshToken": refreshToken,
                 },
             });
 
