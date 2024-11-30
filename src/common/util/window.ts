@@ -3,5 +3,5 @@
  */
 export namespace WindowUtil {
     export const isBrowser = (): boolean => typeof window !== undefined
-    export const isFlutterApp = (): boolean => isBrowser() && typeof window['flutter_inappwebview'] !== undefined
+    export const isFlutterApp = (): boolean => typeof window['flutter_inappwebview'] !== undefined
 }
