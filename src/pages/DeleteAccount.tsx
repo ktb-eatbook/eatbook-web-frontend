@@ -1,8 +1,9 @@
-import {useLocation} from "react-router-dom";
-
 const DeleteAccount = () => {
+    /*
+    // 토큰 받아오기
     const location = useLocation();
     const { accessToken, refreshToken } = location.state || {};
+    */
 
     // TODO: 회원 탈퇴 api 추가\
 

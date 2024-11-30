@@ -1,7 +1,10 @@
 import {useState} from "react";
 
 function Register(): React.JSX.Element {
-    const [token, setToken] = useState<string | null>(null); // 토큰 저장
+    /*
+    // 토큰 저장
+    const [token, setToken] = useState<string | null>(null);
+    */
     const [userInfo, setUserInfo] = useState({
         gender: 'OTHER',
         ageGroup: '0',
