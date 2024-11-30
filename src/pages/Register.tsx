@@ -57,8 +57,10 @@ function Register(): React.JSX.Element {
                 // 플러터 앱에서 접근한 경우
                 if (WindowUtil.isFlutterApp()) {
                     const result2 = result['member']
+                    console.log(result)
+                    console.log(result2)
                     FlutterAppAdaptor.sendLoginResult({
-                        data: { "member": { "data": result2['data']['member'] }},
+                        data: result,
                         accesstoken: accessToken,
                         refreshtoken: refreshToken,
                     })
