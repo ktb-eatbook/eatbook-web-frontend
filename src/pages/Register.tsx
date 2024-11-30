@@ -21,6 +21,10 @@ function Register(): React.JSX.Element {
 
     const register = async (): Promise<void> => {
         try {
+            if(userInfo.ageGroup === "0") {
+                alert("연령대를 입력 해주세요.")
+                return
+            }
             const token = location.search.substring(1).split("=")[1]
 
             const url = `${import.meta.env.VITE_API_URL}/api/signup`;
@@ -32,7 +36,7 @@ function Register(): React.JSX.Element {
                 },
                 body: JSON.stringify({ 
                     token,
-                    ageGroup: userInfo.ageGroup,
+                    ageGroup: parseInt(userInfo.ageGroup),
                     gender: userInfo.gender,
                 }),
             });
