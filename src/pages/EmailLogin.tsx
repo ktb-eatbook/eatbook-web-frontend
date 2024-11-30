@@ -42,7 +42,7 @@ function EmailLogin(): React.JSX.Element {
                     if (WindowUtil.isFlutterApp()) {
                         const data = result['data']
                         FlutterAppAdaptor.sendLoginResult({
-                            data: data['member'],
+                            data,
                             accesstoken: accessToken,
                             refreshtoken: refreshToken,
                         })
