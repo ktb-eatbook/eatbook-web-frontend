@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const DeleteAccount = () => {
     /*
@@ -7,11 +7,26 @@ const DeleteAccount = () => {
     const { accessToken, refreshToken } = location.state || {};
     */
     const location = useLocation();
+    const navigate = useNavigate();
 
     // TODO: 회원 탈퇴 api 추가\
-    const signOut = () => {
+    const signOut = async () => {
         try {
-            console.log(location.state)
+            const { accessToken, refreshToken } = location.state
+            const url = `${import.meta.env.VITE_API_URL}/api/members`;
+            const response = await fetch(url, {
+                method: "DELETE",
+                credentials: 'include',
+                headers: {
+                    "Content-Type": "application/json",
+                    "Cookie": `AccessToken=${accessToken}; RefreshToken=${refreshToken}`
+                },
+            });
+
+            if(response.ok) {
+                alert("회원퇄퇴를 성공적으로 마쳤습니다.\n처음 페이지로 이동합니다.")
+                await navigate("/");
+            } else throw Error(`요청에 실패했습니다.\n응답 코드: ${response.status}\n에러 메세지: ${response.statusText}`)
         } catch(e) {
             console.log("에러 발생")
             console.log(e)

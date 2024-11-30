@@ -73,7 +73,7 @@ function Register(): React.JSX.Element {
                         },
                     });
                 }
-            } else throw Error(`요청을 실패 했습니다.\n응답 코드: ${response.status}`)
+            } else throw Error(`요청을 실패 했습니다.\n응답 코드: ${response.status}\n에러 메세지: ${response.statusText}`)
         } catch(e) {
             console.log("에러 발생")
             console.log(e)
