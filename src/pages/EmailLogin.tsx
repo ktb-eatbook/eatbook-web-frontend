@@ -33,6 +33,8 @@ function EmailLogin(): React.JSX.Element {
                     console.log(`${WindowUtil.isBrowser()}`)
                     console.log(`${WindowUtil.isFlutterApp()}`)
                     console.log("**************결과**************")
+                    console.log(result['data'])
+                    console.log(...result['data'])
                     
                     // 응답 헤더에서 토큰 추출
                     const accessToken = response.headers.get("AccessToken");
