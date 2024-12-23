@@ -19,11 +19,11 @@ const TermsAndConditions = (): React.JSX.Element => {
                     {/*<input type='checkbox'
                            className='rounded-md border-gray-400'
                     ></input>*/}
-                    <p className='text-lg'>[필수] 개인정보 수집 및 이용</p>
+                    <p className='text-lg font-suit'>[필수] 개인정보 수집 및 이용</p>
                 </div>
                 <textarea readOnly={true}
                           rows={25}
-                          className='w-full rounded-md border-gray-200 focus:outline-none focus:ring-0 focus:border-gray-400'
+                          className='w-full font-suit rounded-md border-gray-200 focus:outline-none focus:ring-0 focus:border-gray-400'
                           value={privacyPolicy}
                 ></textarea>
             </div>

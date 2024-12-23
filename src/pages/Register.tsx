@@ -97,7 +97,7 @@ function Register(): React.JSX.Element {
                                     key={index}
                                     type="button"
                                     onClick={() => setUserInfo((prev) => ({...prev, gender: gender}))}
-                                    className={`px-4 py-2 rounded-md text-sm font-medium w-full
+                                    className={`px-4 py-2 rounded-md text-sm font-medium w-full font-suit
                                     ${userInfo.gender === gender
                                             ? "bg-orange-400 text-white"
                                             : "bg-gray-100 text-gray-900"
